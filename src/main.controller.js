@@ -1,12 +1,8 @@
 const Auth = require('./services/auth.service');
 const ListsService = require('./services/lists.service');
+const MembersService = require('./services/members.service');
 
-const controller = (app) => {    
-
-    app.get('/', async (req, res) => {
-        let data = await MC.getListMembers('f346455dd32f72058dfd832ca4d3671f-us4', '597dca9c77');
-        res.send(data);
-    });
+const controller = (app) => {       
 
     app.post('/auth', async (req, res) => {
         res.send(await Auth.authenticate(req.body.username, req.body.password));
@@ -14,6 +10,10 @@ const controller = (app) => {
 
     app.post('/lists', async (req, res) => {
         res.send(await ListsService.getAllLists(req.body.key));
+    });
+
+    app.post('/members', async (req, res) => {        
+        res.send(await MembersService.getAllMembersOfList(req.body.key, req.body.listId));
     });
 
 }
