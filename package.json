@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/matheushpitz/Email-Checker-API#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mailchimp-api-v3": "^1.13.1"
   }
 }
